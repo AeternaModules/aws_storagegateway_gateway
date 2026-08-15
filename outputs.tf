@@ -64,7 +64,7 @@ output "storagegateway_gateways_host_environment" {
 }
 output "storagegateway_gateways_maintenance_start_time" {
   description = "Map of maintenance_start_time values across all storagegateway_gateways, keyed the same as var.storagegateway_gateways"
-  value       = { for k, v in aws_storagegateway_gateway.storagegateway_gateways : k => v.maintenance_start_time if v.maintenance_start_time != null && length(v.maintenance_start_time) > 0 }
+  value       = { for k, v in aws_storagegateway_gateway.storagegateway_gateways : k => one(v.maintenance_start_time) if v.maintenance_start_time != null && length(v.maintenance_start_time) > 0 }
 }
 output "storagegateway_gateways_medium_changer_type" {
   description = "Map of medium_changer_type values across all storagegateway_gateways, keyed the same as var.storagegateway_gateways"
@@ -76,7 +76,7 @@ output "storagegateway_gateways_region" {
 }
 output "storagegateway_gateways_smb_active_directory_settings" {
   description = "Map of smb_active_directory_settings values across all storagegateway_gateways, keyed the same as var.storagegateway_gateways"
-  value       = { for k, v in aws_storagegateway_gateway.storagegateway_gateways : k => v.smb_active_directory_settings if v.smb_active_directory_settings != null && length(v.smb_active_directory_settings) > 0 }
+  value       = { for k, v in aws_storagegateway_gateway.storagegateway_gateways : k => one(v.smb_active_directory_settings) if v.smb_active_directory_settings != null && length(v.smb_active_directory_settings) > 0 }
   sensitive   = true
 }
 output "storagegateway_gateways_smb_file_share_visibility" {
